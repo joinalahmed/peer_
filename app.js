@@ -13,7 +13,7 @@ var watson = require('./watson');
 
 var app = express();
 var http = require('http').Server(app);
-server.listen(3000);
+server = http.listen(3000);
 var io = socket(server);
 
 app.use(express.static(__dirname + '/public/javascripts'));
