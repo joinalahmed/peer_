@@ -55,7 +55,6 @@ router.get('/auth/facebook',
 router.get('/auth/facebook/callback',
 	passport.authenticate('facebook', { failureRedirect: '/'}),
     function (req, res) {
-        alert('FB authenticated');
 		res.redirect('/getstarted/home#');
 	});
 
