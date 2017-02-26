@@ -14,6 +14,7 @@ var app = require('express')()
     , server = http.createServer(app)
     , io = require('socket.io').listen(server);
 
+server.listen(3000);
 
 io.on('connection', function(socket) {
     console.log('connect');
