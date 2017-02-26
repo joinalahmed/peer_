@@ -141,10 +141,18 @@ body {
 
 .text-right {
     text-align:right;
+    padding-top:15px;
 }
 
 .text-left {
     text-align:left;
+    padding-top:5px;
+}
+
+.gauge {
+    height:150px;
+    width:auto;
+    padding-bottom:20px;
 }
 
 
