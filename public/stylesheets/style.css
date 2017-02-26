@@ -126,6 +126,23 @@ body {
     color:#1d2026;
 }
 
+.row {
+    padding-bottom:20px;
+}
+
+.row .col-md-8 p {
+    font-size:19px;
+}
+
+.text-right {
+    text-align:right;
+}
+
+.text-left {
+    text-align:left;
+}
+
+
 @media (min-width: 768px) {
     .masthead-brand {
         float: left;
