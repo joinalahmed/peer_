@@ -6,8 +6,6 @@ var path = require('path');
 var FacebookTokenStrategy = require('passport-facebook-token');
 var pug = require('pug');
 
-var home = pug.renderFile('./home.pug',  merge(options,  locals));
-
 
 passport.use(new Strategy({
 	clientID: '165008204006667',
@@ -68,7 +66,7 @@ router.get('/about', function (req, res) {
 router.get('/getstarted/home', 
 	//require('connect-ensure-login').ensureLoggedIn(),
 	function(req, res) {
-		res.render(home, { user: req.user });
+		pug.renderFile('./views/home.pug', { user: req.user });
 	});
 
 module.exports = router;
