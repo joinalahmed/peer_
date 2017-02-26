@@ -69,9 +69,9 @@ logInWithFacebook = function() { //
 					'GET',
 					{"fields":"posts{comments{created_time,from,message}}"},
 					function(response) {
-						console.log(response);
+						//console.log(response);
 
-						var posts = req.body.result['posts']['data'];
+						var posts = response['posts']['data'];
 
 					    var thisComment, authorId, authorName, commentBody;
 
