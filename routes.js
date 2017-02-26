@@ -6,7 +6,7 @@ var Strategy = require('passport-facebook').Strategy;
 passport.use(new Strategy({
 	clientID: '165008204006667',
 	clientSecret: '0f725ad8b39da0a2f612b1620c2f11c7',
-	callbackURL: '/getstarted/return'
+	callbackURL: 'http://www.peer-mlh.com/getstarted/return'
 }, 
 function(accessToken, refreshToken, profile, cb) {
 	return cb(null, profile);
@@ -20,6 +20,9 @@ passport.deserializeUser(function(obj, cb) {
 	cb(null, obj);
 });
 
+
+router.set('views', path.join(__dirname, 'views'));
+router.set('view engine', 'pug');
 
 router.use(passport.initialize());
 router.use(passport.session());
