@@ -16,6 +16,8 @@ var http = require('http').Server(app);
 var server = app.listen(3000);
 var io = socket(server);
 
+app.use(express.static(__dirname + '/public/javascripts'));
+
 
 io.on('connection', function(socket) {
     console.log('New connection');
