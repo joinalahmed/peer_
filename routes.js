@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var Strategy = require('passport-facebook').Strategy;
+var path = require('path');
 
 passport.use(new Strategy({
 	clientID: '165008204006667',
