@@ -9,7 +9,8 @@ var bodyParser = require('body-parser');
 var routes = require('./routes');
 var watson = require('./watson');
 
-var app = require('express')()
+var app1 = require('express')
+    , app = app1()
     , http = require('http')
     , server = http.createServer(app)
     , io = require('socket.io').listen(server);
@@ -30,7 +31,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(app.static(path.join(__dirname, 'public')));
+app.use(app1.static(path.join(__dirname, 'public')));
 
 app.use('/watson', watson);
 app.use('/', routes);
