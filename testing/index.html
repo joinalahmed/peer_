@@ -1,135 +1,203 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<script type="text/javascript" src="facebook_api_test.js"></script>
-	<title>test</title>
-</head>
-<body>
+﻿<!DOCTYPE html>
+<html lang="en" id="front-page">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
 
-	<p><a href="#" onClick="logInWithFacebook()">Log In with the JavaScript SDK</a></p>
+    <title>Peer</title>
 
-	<script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-		var userIdToSearch = "walmart"; //ID of the user who's profile we're searching
-		var users = [];
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
 
-		function offense(offense)
-			{
-				this.offenses = [];
-				this.counter = 0;
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
-				this.addOffense = function(offense) {
-					offenses.push(offense); 
-					counter++;
-				}
-			}
-		function person(name,id,offense)
-			{
-				this.name = name;
-				this.id = id;
-				this.offense = new offense();
+    <!-- Custom styles for this template -->
+    <link href="http://localhost:3000/stylesheets/style.css" rel="stylesheet">
+    
+  </head>
 
-				this.getName = function() {
-					return name;
-				}
+  <body>
 
-				this.addOffense = function(text) {
-					this.offense.addOffense(text);
-				}
+  <script>
 
-				this.getOffensesCounter = function() {
-					return this.offense.counter;
-				}
+    var userIdToSearch = "walmart"; //ID of the user who's profile we're searching
+    var users = [];
 
-				this.getOffenses = function() {
-					return offenses;
-				}
-			}
+    function offense(offense)
+      {
+        this.offenses = [];
+        this.counter = 0;
 
-		function searchUsers(id){
-			var found = false;
-			users.forEach(checkId);
+        this.addOffense = function(offense) {
+          offenses.push(offense); 
+          counter++;
+        }
+      }
+    function person(name,id,offense)
+      {
+        this.name = name;
+        this.id = id;
+        this.offense = new offense();
 
-			for (user in users) {
-				if(user.getName() === id) {
-					found = true;
-				}
-			}
+        this.getName = function() {
+          return name;
+        }
 
-			return found;
-		}
-		
-		logInWithFacebook = function() { //
-			FB.login(function(response) {
-				if (response.authResponse) {
-					alert('You are logged in &amp; cookie set!');
-					var accessToken = response.authResponse.accessToken;
-					// Now you can redirect the user or do an AJAX request to
-					// a PHP script that grabs the signed request from the cookie
-					function testAPI() {
-						console.log('Welcome!  Fetching your information.... ');
+        this.addOffense = function(text) {
+          this.offense.addOffense(text);
+        }
 
-						FB.api(
-							'/' + userIdToSearch,
-							'GET',
-							{"fields":"posts{comments{created_time,from,message}}"},
-							function(response) {
-								//console.log(response);
-								posts = response['posts']['data'];
+        this.getOffensesCounter = function() {
+          return this.offense.counter;
+        }
 
-								var thisComment, authorId, authorName, commentBody;
+        this.getOffenses = function() {
+          return offenses;
+        }
+      }
 
-								for (i = 0; i < posts.length; i++) { //I'M USING INCONSISTENT LOOPS BECAUSE THEY'RE DUMB
+    function searchUsers(id){
+      var found = false;
+      users.forEach(checkId);
 
-									for (k = 0; k < posts[i]['comments']['data'].length; k++) {
+      for (user in users) {
+        if(user.getName() === id) {
+          found = true;
+        }
+      }
 
-										//ask watson about individual comments
-										comment = posts[i]['comments']['data'][k];
-										authorId = comment['from']['id'];
-										authorName = comment['from']['name'];
+      return found;
+    }
+    
+    logInWithFacebook = function() { //
+      FB.login(function(response) {
+        if (response.authResponse) {
+          alert('You are logged in &amp; cookie set!');
+          var accessToken = response.authResponse.accessToken;
+          // Now you can redirect the user or do an AJAX request to
+          // a PHP script that grabs the signed request from the cookie
+          function testAPI() {
+            console.log('Welcome!  Fetching your information.... ');
 
-										commentBody = comment['message'];
+            FB.api(
+              '/' + userIdToSearch,
+              'GET',
+              {"fields":"posts{comments{created_time,from,message}}"},
+              function(response) {
+                //console.log(response);
+                posts = response['posts']['data'];
 
-										console.log(commentBody);
-										
-									}
-								}						  		
-						  }
-						);
-					}
+                var thisComment, authorId, authorName, commentBody;
 
-					testAPI();
+                for (i = 0; i < posts.length; i++) { //I'M USING INCONSISTENT LOOPS BECAUSE THEY'RE DUMB
 
+                  for (k = 0; k < posts[i]['comments']['data'].length; k++) {
 
-				} else {
-					alert('Login failed.');
-					console.log("FAILED");
-				}
-			});
-			return false;
-		};
+                    //ask watson about individual comments
+                    comment = posts[i]['comments']['data'][k];
+                    authorId = comment['from']['id'];
+                    authorName = comment['from']['name'];
 
-		window.fbAsyncInit = function() {
-			FB.init({
-				appId: '165008204006667',
-				cookie: true, // This is important, it's not enabled by default
-				version: 'v2.8'
-			});
+                    commentBody = comment['message'];
+
+                    console.log(commentBody);
+                    
+                  }
+                }                 
+              }
+            );
+          }
+
+          testAPI();
 
 
-		};
+        } else {
+          alert('Login failed.');
+          console.log("FAILED");
+        }
+      });
+      return false;
+    };
 
-		(function(d, s, id){
-			var js, fjs = d.getElementsByTagName(s)[0];
-			if (d.getElementById(id)) {return;}
-			js = d.createElement(s); js.id = id;
-			js.src = "https://connect.facebook.net/en_US/sdk.js";
-			fjs.parentNode.insertBefore(js, fjs);
-  		}(document, 'script', 'facebook-jssdk'));
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId: '165008204006667',
+        cookie: true, // This is important, it's not enabled by default
+        version: 'v2.8'
+      });
 
-	</script>
-	<p id="status"></p>
-	<a href="/auth/">OIKASDFJO;FJA</a>
 
-</body>
+    };
+
+    (function(d, s, id){
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+
+  </script>
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">Peer</h3>
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li class="active"><a href="#">Home</a></li>
+                  <li><a href="/about">About Us</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+
+          <div class="inner cover">
+            <h1 class="cover-heading">Peer: Monitor peer interactions
+              with artificial intelligence.</h1>
+            <p class="lead">Utilize artificial intelligence to peer
+              into your child's facebook interactions in order to
+              identify harassment over Facebook both to or from your
+              child</p>
+            <p class="lead">
+              <a href="/auth/facebook" class="btn btn-lg btn-default">Get Started</a>
+            </p>
+          </div>
+
+          <div class="mastfoot">
+            <div class="inner">
+              <p>Designed and developed by Marcus Armband, Dillon
+                Culp, Gabriel Guzman,<br> and Fernando Quintero</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript
+         ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+      <script src="../../dist/js/bootstrap.min.js"></script>
+      <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+      <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
 </html>

@@ -2,8 +2,57 @@ var userIdToSearch = "walmart"; //ID of the user who's profile we're searching
 
 src = "//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js";
 
-var socket = io('13.65.42.183:3000');
 
+
+var users = [];
+var offenses = []
+function offense(score, body) //Holds offense message bodies and a number of offenses. This object is only to be used with person.
+    {
+        this.score = score;
+        this.body = body;
+    }
+function person(name,id,offense)
+    {
+        this.name = name;
+        this.id = id;
+        this.offenses = [];
+        this.offensesCount = 0;
+        this.posts = [];
+
+        this.getId = function() {
+            return id;
+        }
+
+        this.getName = function() {
+            return name;
+        }
+
+        this.addOffense = function(score, body) {
+            this.offenses.push(new offense(score, body));
+            this.offensesCount++;
+        }
+
+        this.getOffensesCounter = function() {
+            return this.offense.counter;
+        }
+
+        this.getOffenses = function() {
+            return offenses;
+        }
+    }
+
+function searchUsers(id){
+    var found = -1;
+
+    for (i = 0; i < users.length; i++) {
+        if(user.getId() === id) {
+            found = i;
+            break;
+        }
+    }
+
+    return found;
+}
 
 logInWithFacebook = function() { //
 	FB.login(function(response) {
@@ -20,12 +69,60 @@ logInWithFacebook = function() { //
 					'GET',
 					{"fields":"posts{comments{created_time,from,message}}"},
 					function(response) {
-						//console.log(response);
-						$(document).ready(function(){
+						console.log(response);
 
-							$.post("http://13.65.42.183:80/watson/parse", { result: response})
-						})
-											  		
+						var posts = req.body.result['posts']['data'];
+
+					    var thisComment, authorId, authorName, commentBody;
+
+					    for (i = 0; i < posts.length; i++) { //I'M USING INCONSISTENT LOOPS BECAUSE THEY'RE DUMB
+
+					        for (k = 0; k < posts[i]['comments']['data'].length; k++) {
+
+					            //ask watson about individual comments
+					            comment = posts[i]['comments']['data'][k];
+					            authorId = comment['from']['id'];
+					            authorName = comment['from']['name'];
+
+					            commentBody = comment['message'];
+
+					            console.log(commentBody);
+
+
+					            
+					        }
+					    }
+						
+						/*
+						function createCORSRequest(method, url) {
+						  var xhr = new XMLHttpRequest();
+						  if ("withCredentials" in xhr) {
+
+						    // Check if the XMLHttpRequest object has a "withCredentials" property.
+						    // "withCredentials" only exists on XMLHTTPRequest2 objects.
+						    xhr.open(method, url, true);
+
+						  } else if (typeof XDomainRequest != "undefined") {
+
+						    // Otherwise, check if XDomainRequest.
+						    // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
+						    xhr = new XDomainRequest();
+						    xhr.open(method, url);
+
+						  } else {
+
+						    // Otherwise, CORS is not supported by the browser.
+						    xhr = null;
+
+						  }
+						  return xhr;
+						}
+
+						var xhr = createCORSRequest('GET', url);
+						if (!xhr) {
+						  throw new Error('CORS not supported');
+						}*/
+																	  		
 				  }
 				);
 			}
