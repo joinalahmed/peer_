@@ -22,8 +22,8 @@ passport.deserializeUser(function(obj, cb) {
 });
 
 
-router.set('views', path.join(__dirname, 'views'));
-router.set('view engine', 'pug');
+//router.set('views', path.join(__dirname, 'views'));
+//router.set('view engine', 'pug');
 
 router.use(passport.initialize());
 router.use(passport.session());
