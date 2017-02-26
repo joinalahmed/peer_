@@ -16,6 +16,10 @@
     "express": "^4.14.0",
     "morgan": "^1.7.0",
     "pug": "^2.0.0-beta6",
-    "serve-favicon": "^2.3.0"
+    "serve-favicon": "^2.3.0",
+    "connect-ensure-login": "^0.1.1",
+    "express-session": "^1.11.3",
+    "passport": "^0.2.2",
+    "passport-facebook": "^2.0.0"
   }
 }
