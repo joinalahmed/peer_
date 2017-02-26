@@ -108,7 +108,6 @@ window.fbAsyncInit = function() {
 		cookie: true, // This is important, it's not enabled by default
 		version: 'v2.8'
 	});
-	logInWithFacebook();
 
 };
 
