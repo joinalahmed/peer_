@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var Strategy = require('passport-facebook').Strategy;
+var path = require('path');
 
 passport.use(new Strategy({
 	clientID: '165008204006667',
@@ -21,8 +22,8 @@ passport.deserializeUser(function(obj, cb) {
 });
 
 
-router.set('views', path.join(__dirname, 'views'));
-router.set('view engine', 'pug');
+//router.set('views', path.join(__dirname, 'views'));
+//router.set('view engine', 'pug');
 
 router.use(passport.initialize());
 router.use(passport.session());
