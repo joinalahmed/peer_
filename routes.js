@@ -64,9 +64,10 @@ router.get('/about', function (req, res) {
 });
 
 router.get('/getstarted/home', 
-	//require('connect-ensure-login').ensureLoggedIn(),
+	require('connect-ensure-login').ensureLoggedIn(),
 	function(req, res) {
-		pug.renderFile('./views/home.pug', { user: req.user });
+		//pug.renderFile('./views/home.pug', { user: req.user });
+        res.redirect('/about')
 	});
 
 module.exports = router;
