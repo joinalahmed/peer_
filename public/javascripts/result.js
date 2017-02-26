@@ -1,5 +1,14 @@
 var userIdToSearch = "walmart"; //ID of the user who's profile we're searching
 var users = [];
+var watson = require('watson-developer-cloud');
+
+var tone_analyzer = watson.tone_analyzer({
+    username: "d2e5af13-2ac6-4860-8066-ad1f77d2b252",
+    password: "EbHk45QRU0xv",
+    version: 'v3',
+    version_date: '2016-05-19 '
+});
+
 
 console.log('beginning');
 
@@ -82,8 +91,15 @@ logInWithFacebook = function() { //
 
 								commentBody = comment['message'];
 
-								console.log(commentBody);
-								
+								_self.open("peer-mlh.com/watson/search?text=" + encodeURIComponent(commentBody));
+
+								tone_analyzer.tone({ text: commentBody },
+        						function (err, tone) {
+            					if (err)
+                					console.log(err);
+            					else
+                					res.send(JSON.stringify(tone, null, 2));
+        						});	
 							}
 						}						  		
 				  }
