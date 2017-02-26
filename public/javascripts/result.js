@@ -3,6 +3,24 @@ var users = [];
 
 console.log('beginning');
 
+window.fbAsyncInit = function() {
+	FB.init({
+		appId: '165008204006667',
+		cookie: true, // This is important, it's not enabled by default
+		version: 'v2.8'
+	});
+
+
+};
+
+(function(d, s, id){
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) {return;}
+	js = d.createElement(s); js.id = id;
+	js.src = "https://connect.facebook.net/en_US/sdk.js";
+	fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+
 function offense(offense)
 	{
 		this.offenses = [];
@@ -99,22 +117,6 @@ logInWithFacebook = function() { //
 	return false;
 };
 
-window.fbAsyncInit = function() {
-	FB.init({
-		appId: '165008204006667',
-		cookie: true, // This is important, it's not enabled by default
-		version: 'v2.8'
-	});
 
-
-};
-
-(function(d, s, id){
-	var js, fjs = d.getElementsByTagName(s)[0];
-	if (d.getElementById(id)) {return;}
-	js = d.createElement(s); js.id = id;
-	js.src = "https://connect.facebook.net/en_US/sdk.js";
-	fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));
 
 console.log('end');
