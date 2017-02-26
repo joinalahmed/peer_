@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26020.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "peer_", "peer_.njsproj", "{8EB90571-0A9F-4E81-9846-B88047C7AE1F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8EB90571-0A9F-4E81-9846-B88047C7AE1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EB90571-0A9F-4E81-9846-B88047C7AE1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EB90571-0A9F-4E81-9846-B88047C7AE1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EB90571-0A9F-4E81-9846-B88047C7AE1F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
