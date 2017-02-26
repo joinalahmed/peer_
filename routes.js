@@ -4,6 +4,7 @@ var passport = require('passport');
 var Strategy = require('passport-facebook').Strategy;
 var path = require('path');
 var FacebookTokenStrategy = require('passport-facebook-token');
+var pug = require('pug');
 
 
 passport.use(new Strategy({
@@ -55,8 +56,7 @@ router.get('/auth/facebook',
 router.get('/auth/facebook/callback',
 	passport.authenticate('facebook', { failureRedirect: '/'}),
     function (req, res) {
-        alert('FB authenticated');
-		res.redirect('/getstarted/home');
+		res.redirect('/getstarted/home#');
 	});
 
 router.get('/about', function (req, res) {
@@ -66,7 +66,8 @@ router.get('/about', function (req, res) {
 router.get('/getstarted/home', 
 	//require('connect-ensure-login').ensureLoggedIn(),
 	function(req, res) {
-		res.render('home', { user: req.user });
+		//pug.renderFile('./views/home.pug', { user: req.user });
+        res.redirect('/about')
 	});
 
 module.exports = router;
