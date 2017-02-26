@@ -33,6 +33,7 @@
     <Compile Include="app.js" />
     <Compile Include="routes.js" />
     <Compile Include="bin\www" />
+    <Compile Include="watson.js" />
     <Content Include="package.json" />
     <Content Include="public\about.html" />
     <Content Include="public\index_.html" />
