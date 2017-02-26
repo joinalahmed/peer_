@@ -63,7 +63,7 @@ router.get('/about', function (req, res) {
 });
 
 router.get('/getstarted/home', 
-	require('connect-ensure-login').ensureLoggedIn(),
+	//require('connect-ensure-login').ensureLoggedIn(),
 	function(req, res) {
 		res.render('home', { user: req.user });
 	});
