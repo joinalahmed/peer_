@@ -11,6 +11,7 @@
     <link rel="icon" href="../../favicon.ico">
     <title>Results</title>
     <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script type="text/javascript" src="../watson.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -81,7 +82,7 @@
                       <h4>Bully Report</h4>
                       <img class="gauge"
                            src="http://angularscript.com/wp-content/uploads/2015/05/Simple-Radial-Gauge-with-AngularJS-and-SVG.jpg">
-                      <button type="button" class="btn btn-primary report-btn" onclick="watson.js">View Report</button>
+                      <button type="button" class="btn btn-primary report-btn" onclick="callWatson()">View Report</button>
 
                     </div>
                     <div class="col-xs-12 col-md-6">
