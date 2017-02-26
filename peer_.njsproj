@@ -35,7 +35,6 @@
     <Compile Include="bin\www" />
     <Content Include="package.json" />
     <Content Include="public\about.html" />
-    <Content Include="public\index_.html" />
     <Content Include="public\stylesheets\main.css" />
     <Content Include="README.md" />
     <Content Include="views\home.pug" />
