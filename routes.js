@@ -5,7 +5,7 @@ var Strategy = require('passport-facebook').Strategy;
 var path = require('path');
 var FacebookTokenStrategy = require('passport-facebook-token');
 
-/*
+
 passport.use(new Strategy({
 	clientID: '165008204006667',
 	clientSecret: '0f725ad8b39da0a2f612b1620c2f11c7',
@@ -13,8 +13,9 @@ passport.use(new Strategy({
 }, 
 function(accessToken, refreshToken, profile, cb) {
 	return cb(null, profile);
-})); */
+})); 
 
+/*
 passport.use(new FacebookTokenStrategy({
     clientID: '165008204006667',
     clientSecret: '0f725ad8b39da0a2f612b1620c2f11c7'
@@ -23,7 +24,7 @@ passport.use(new FacebookTokenStrategy({
       return done(error, user);
     });
   }
-));
+));*/
 
 passport.serializeUser(function(user, cb){
 	cb(null, user);
