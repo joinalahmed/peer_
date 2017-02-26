@@ -107,8 +107,7 @@ body {
 }
 
 .about-heading {
-    margin-top:0px;
-    
+    padding-top:25px;
 }
 
 .navbar {
@@ -147,8 +146,6 @@ body {
 @media (min-width: 768px) {
     .masthead-brand {
         float: left;
-        height:100px;
-        width:auto;
     }
     .masthead-nav {
         float: right;
