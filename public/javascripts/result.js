@@ -1,7 +1,7 @@
 var userIdToSearch = "walmart"; //ID of the user who's profile we're searching
 var users = [];
 
-var socket = io.connect('13.65.42.183:3000');
+var socket = io.connect('peer-mlh.com:3000');
 
 function offense(offense) //Holds offense message bodies and a number of offenses. This object is only to be used with person.
 	{
