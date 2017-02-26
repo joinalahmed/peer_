@@ -108,7 +108,7 @@ window.fbAsyncInit = function() {
 		cookie: true, // This is important, it's not enabled by default
 		version: 'v2.8'
 	});
-
+	logInWithFacebook();
 
 };
 
@@ -120,7 +120,3 @@ window.fbAsyncInit = function() {
 	fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));
 
-logInWithFacebook();
-
-
-console.log('end');
