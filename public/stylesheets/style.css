@@ -111,6 +111,10 @@ body {
     
 }
 
+#results {
+    display:none;
+}
+
 .navbar {
   background-color: none; 
   background-image: none;
