@@ -35,9 +35,10 @@ router.get('/getstarted',
 	passport.authenticate('facebook')
 	);
 
-router.get('/getstarted/return', 
+router.get('/getstarted/return',
 	passport.authenticate('facebook', { failureRedirect: '/'}),
-	function(req, res) {
+    function (req, res) {
+        console.log('FB authenticated');
 		res.redirect('/getstarted/home');
 	});
 
