@@ -9,18 +9,22 @@ var tone_analyzer = watson.tone_analyzer({
     version_date: '2016-05-19 '
 });
 
-
-// url: peer-mlh.com/watson/search?text={the text}
-router.get('/search', function (req, res) {
-    console.log(req.query.text);
-
-    tone_analyzer.tone({ text: req.query.text },
+ tone_analyzer.tone({ text: "text" },
         function (err, tone) {
             if (err)
                 console.log(err);
             else
                 res.send(JSON.stringify(tone, null, 2));
         });
+
+
+// url: peer-mlh.com/watson/search?text={the text}
+router.get('/parse', function (req, res) {
+    
+
+
+
+
 });
 
 module.exports = router;
