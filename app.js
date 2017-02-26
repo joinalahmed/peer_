@@ -22,6 +22,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+if (window.location.hash && window.location.hash == '#_=_') {
+    window.location.hash = '';
+}
+
 app.use('/', routes);
 
 // catch 404 and forward to error handler

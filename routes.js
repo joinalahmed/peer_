@@ -9,7 +9,7 @@ var FacebookTokenStrategy = require('passport-facebook-token');
 passport.use(new Strategy({
 	clientID: '165008204006667',
 	clientSecret: '0f725ad8b39da0a2f612b1620c2f11c7',
-	callbackURL: 'http://www.peer-mlh.com/getstarted/return'
+    callbackURL: 'http://www.peer-mlh.com/auth/facebook/callback'
 }, 
 function(accessToken, refreshToken, profile, cb) {
 	return cb(null, profile);
@@ -47,11 +47,11 @@ router.get('/', function (req, res) {
     res.sendFile('./public/index_.html', { root: __dirname });
 });
 
-router.get('/getstarted', 
+router.get('/auth/facebook', 
 	passport.authenticate('facebook')
 	);
 
-router.get('/getstarted/return',
+router.get('/auth/facebook/callback',
 	passport.authenticate('facebook', { failureRedirect: '/'}),
     function (req, res) {
         console.log('FB authenticated');
