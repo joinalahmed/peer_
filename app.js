@@ -1,34 +1,23 @@
 ﻿'use strict';
-var express = require('express');
+
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var socket = require('socket.io');
-
 var routes = require('./routes');
 var watson = require('./watson');
 
-var app = express();
-var http = require('http').Server(app);
-var server = http.listen(3000);
-var io = socket(server);
-
-app.use(express.static(__dirname + '/public/javascripts'));
+var app = require('express')()
+    , http = require('http')
+    , server = http.createServer(app)
+    , io = require('socket.io').listen(server);
 
 
 io.on('connection', function(socket) {
-    console.log('New connection');
-
-    socket.on('message', function(message){
-        console.log('test');
-    });
+    console.log('connect');
 });
-
-
-var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
