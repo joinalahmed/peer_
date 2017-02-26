@@ -54,7 +54,7 @@ function searchUsers(id){
 logInWithFacebook = function() { //
 	FB.login(function(response) {
 		if (response.authResponse) {
-			console('You are logged in & cookie set!');
+			console.log('You are logged in & cookie set!');
 			var accessToken = response.authResponse.accessToken;
 			// Now you can redirect the user or do an AJAX request to
 			// a PHP script that grabs the signed request from the cookie
