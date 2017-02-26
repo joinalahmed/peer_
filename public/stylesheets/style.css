@@ -32,15 +32,19 @@ html,
 body {
     height: 100%;
     background:white;
-    background-image:url("../images/facebook-bg.png"), url("../images/comments.png");
-    background-repeat: repeat-x, repeat;
-    background-size: 100%;
+    
 }
 body {
     color: #1D2026;
     text-align: center;
     text-shadow: 0 1px 3px rgba(0,0,0,.5);
     margin:0px;
+}
+
+#front-page body {
+    background-image:url("../images/facebook-bg.png"), url("../images/comments.png");
+    background-repeat: repeat-x, repeat;
+    background-size: 100%;
 }
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
@@ -100,6 +104,26 @@ body {
 .masthead-nav > .active > a:focus {
     color: #1D2026;
     border-bottom-color: #3B5998;
+}
+
+.about-heading {
+    padding-top:25px;
+}
+
+.navbar {
+  background-color: none; 
+  background-image: none;
+  background-image: none;
+  background-image: none;
+  background-image: none;
+  background-image: none;
+  background-image: none;
+  background-repeat: no-repeat;
+  filter: none;
+}
+
+.navbar-default .navbar-nav>li>a:link {
+    color:#1d2026;
 }
 
 @media (min-width: 768px) {
