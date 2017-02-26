@@ -1,15 +1,72 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-	<title>
-		Result
-	</title>
-	<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
-</head>
-<body>
-	<p>You're in</p>
-	<button onclick="logInWithFacebook()">L;ASKDJFKL;ASJDF</button>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come\
+         *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <title>Results</title>
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png"/>
 
-	<script src="/javascripts/result.js"></script>
-</body>
+    <!-- Optional theme -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+          crossorigin="anonymous">
+    
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="stylesheets/style.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+    <script src="/javascripts/result.js"></script>
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <img src="images/logo-lg.png" class="masthead-brand img-responsive">
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li><a href="/">Home</a></li>
+                  <li><a href="/about">About Us</a></li>
+		</ul>
+              </nav>
+
+              <div class="inner about row">
+                <div class="col-xs-12">
+                  <h1 class="about-heading">Results</h1>
+                </div>
+              </div>
+
+              <div class="result-content">
+	        <button class="btn btn-default" onclick="logInWithFacebook()">Run</button>
+	        <script src="/javascripts/result.js"></script>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
