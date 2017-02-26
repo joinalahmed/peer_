@@ -35,7 +35,7 @@ router.get('/getstarted',
 	passport.authenticate('facebook')
 	);
 
-router.get('/login#_=_',
+router.get('/getstarted/return',
 	passport.authenticate('facebook', { failureRedirect: '/'}),
     function (req, res) {
         console.log('FB authenticated');
