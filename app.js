@@ -6,8 +6,27 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var socket = require('socket.io');
+
 var routes = require('./routes');
 var watson = require('./watson');
+
+var app = express();
+var http = require('http').Server(app);
+var server = app.listen(3000);
+var io = socket(server);
+
+app.use(express.static(__dirname + '/public/javascripts'));
+
+
+io.on('connection', function(socket) {
+    console.log('New connection');
+
+    socket.on('message', function(message){
+        console.log('test');
+    });
+});
+
 
 var app = express();
 
@@ -32,6 +51,8 @@ app.use(function (req, res, next) {
     err.status = 404;
     next(err);
 });
+
+
 
 // error handlers
 

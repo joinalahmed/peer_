@@ -47,15 +47,15 @@ router.get('/auth/facebook',
 router.get('/auth/facebook/callback',
 	passport.authenticate('facebook', { failureRedirect: '/'}),
     function (req, res) {
-		res.redirect('/getstarted/home#');
+		res.redirect('/result');
 	});
 
 router.get('/about', function (req, res) {
     res.sendFile('./public/about.html', { root: __dirname });
 });
 
-router.get('/getstarted/home', 
-	//require('connect-ensure-login').ensureLoggedIn(),
+
+router.get('/result', 
 	function(req, res) {
         res.sendfile('./public/result.html', { root: __dirname })
 	});

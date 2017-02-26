@@ -10,17 +10,11 @@ var tone_analyzer = watson.tone_analyzer({
 });
 
 
-// url: peer-mlh.com/watson/search?text={the text}
-router.get('/search', function (req, res) {
-    console.log(req.query.text);
 
-    tone_analyzer.tone({ text: req.query.text },
-        function (err, tone) {
-            if (err)
-                console.log(err);
-            else
-                res.send(JSON.stringify(tone, null, 2));
-        });
+
+// url: peer-mlh.com/watson/parse?id={the facebookId}
+router.get('/parse', function (req, res) {
+
 });
 
 module.exports = router;

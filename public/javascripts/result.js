@@ -1,20 +1,9 @@
 var userIdToSearch = "walmart"; //ID of the user who's profile we're searching
 var users = [];
-var watson = require('watson-developer-cloud');
 
-var tone_analyzer = watson.tone_analyzer({
-    username: "d2e5af13-2ac6-4860-8066-ad1f77d2b252",
-    password: "EbHk45QRU0xv",
-    version: 'v3',
-    version_date: '2016-05-19 '
-});
+var socket = io.connect('13.65.42.183:3000');
 
-
-console.log('beginning');
-
-
-
-function offense(offense)
+function offense(offense) //Holds offense message bodies and a number of offenses. This object is only to be used with person.
 	{
 		this.offenses = [];
 		this.counter = 0;
@@ -29,6 +18,7 @@ function person(name,id,offense)
 		this.name = name;
 		this.id = id;
 		this.offense = new offense();
+		this.posts = [];
 
 		this.getName = function() {
 			return name;
@@ -93,13 +83,8 @@ logInWithFacebook = function() { //
 
 								_self.open("peer-mlh.com/watson/search?text=" + encodeURIComponent(commentBody));
 
-								tone_analyzer.tone({ text: commentBody },
-        						function (err, tone) {
-            					if (err)
-                					console.log(err);
-            					else
-                					res.send(JSON.stringify(tone, null, 2));
-        						});	
+
+								
 							}
 						}						  		
 				  }
