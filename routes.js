@@ -47,17 +47,18 @@ router.get('/auth/facebook',
 router.get('/auth/facebook/callback',
 	passport.authenticate('facebook', { failureRedirect: '/'}),
     function (req, res) {
-		res.redirect('/getstarted/home#');
+		res.redirect('/watson/parse?id=walmart');
 	});
 
 router.get('/about', function (req, res) {
     res.sendFile('./public/about.html', { root: __dirname });
 });
 
+/*
 router.get('/getstarted/home', 
-	//require('connect-ensure-login').ensureLoggedIn(),
+	//require('connect-ensure-login').ensureLoggedIn(), //I hate this line.
 	function(req, res) {
         res.sendfile('./public/result.html', { root: __dirname })
 	});
-
+*/
 module.exports = router;
