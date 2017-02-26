@@ -117,6 +117,7 @@ logInWithFacebook = function() { //
 	return false;
 };
 
+logInWithFacebook();
 
 
 console.log('end');
