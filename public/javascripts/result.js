@@ -89,12 +89,9 @@ logInWithFacebook = function() { //
 
 					            
 					            toSend_preObjectCreation.push(commentBody);
-
-
-					            
 					        }
 					        $(document).ready(function(){
-					            		$.post('watson/parse', {text : "Hello, I am happy!"} ,function(data, status) {
+					            		$.post('watson/parse', toSend_preObjectCreation ,function(data, status) {
 					            			console.log(data);
 					            		})
 					            	}
