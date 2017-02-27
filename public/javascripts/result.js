@@ -93,7 +93,8 @@ logInWithFacebook = function() { //
 					        
 					    }
 					    $(document).ready(function(){
-			            		$.post('watson/parse', toSend_preObjectCreation ,function(data, status) {
+					    		var jsonReady = JSON.stringify(toSend_preObjectCreation);
+			            		$.post('watson/parse', jsonReady ,function(data, status) {
 			            			console.log(data);
 			            		})
 			            	}
