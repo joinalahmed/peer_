@@ -90,13 +90,14 @@ logInWithFacebook = function() { //
 					            
 					            toSend_preObjectCreation.push(commentBody);
 					        }
-					        $(document).ready(function(){
-					            		$.post('watson/parse', toSend_preObjectCreation ,function(data, status) {
-					            			console.log(data);
-					            		})
-					            	}
-					            );
+					        
 					    }
+					    $(document).ready(function(){
+			            		$.post('watson/parse', toSend_preObjectCreation ,function(data, status) {
+			            			console.log(data);
+			            		})
+			            	}
+			            );
 																	  		
 					}
 				);
