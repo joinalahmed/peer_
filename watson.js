@@ -11,10 +11,14 @@ var tone_analyzer = watson.tone_analyzer({
 
 // url: peer-mlh.com/watson/parse?id={the facebookId}
 // for testing url: peer-mlh.com/watson/parse?text=
+// Method above is deprecated af. 
+
 router.post('/parse', function(req,res){
     var received = req.body;
+    //I commented out the Watson block below to speed up testing. Uncomment to use Watson
     /*
-    tone_analyzer.tone({ text: req.body.text},
+    tone_analyzer.tone({ text: req.body.text},  //Make sure that the object sent in the post request to Watson has a
+                                                //text field, or rename the ".text" as appropriate.
       function(err, tone) {
         if (err)
             console.log(err);
@@ -25,22 +29,8 @@ router.post('/parse', function(req,res){
         }
 
     }); */
-    res.send(req.body);
+    res.send(req.body); //Sending back the same data for testing. Remove when watson is being used.
 });
 
-/*
 
-router.get('/parse', function (req, res) {
-    tone_analyzer.tone({ text: "It's already December 23, 2016 and I have NOT received my shipment that was supposed to come the 22nd. I expect my $12 that I paid for expidited shipping back, since you obviously LIED about the arrival date! I checked the tracking and it says it'll come in the 27th, which is after Christmas and is RIDICULOUS because I PAID for EXPIDITED shipping and it did NOTHING. Now I have to tell my neice that I DON'T have a gift for her because WALMART LIED. Terrible company and terrible customer service. Target is 100x better than Walmart!" },
-    function(err, tone) {
-        if (err)
-          console.log(err);
-        else {
-           console.log(tone);
-        }
-    });
-   
-    res.send(users);
-});
-*/
 module.exports = router;

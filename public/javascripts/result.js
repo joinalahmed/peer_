@@ -5,41 +5,39 @@ src = "//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js";
 
 
 var users = [];
-var offenses = []
-function offense(score, body) //Holds offense message bodies and a number of offenses. This object is only to be used with person.
-    {
-        this.score = score;
-        this.body = body;
+var offenses = [];
+function offense(score, body) { //Holds offense message bodies and a number of offenses. This object is only to be used with person.
+    this.score = score;
+    this.body = body;
+}
+function person(name,id,offense) {
+    this.name = name;
+    this.id = id;
+    this.offenses = [];
+    this.offensesCount = 0;
+    this.posts = [];
+
+    this.getId = function() {
+        return id;
     }
-function person(name,id,offense)
-    {
-        this.name = name;
-        this.id = id;
-        this.offenses = [];
-        this.offensesCount = 0;
-        this.posts = [];
 
-        this.getId = function() {
-            return id;
-        }
-
-        this.getName = function() {
-            return name;
-        }
-
-        this.addOffense = function(score, body) {
-            this.offenses.push(new offense(score, body));
-            this.offensesCount++;
-        }
-
-        this.getOffensesCounter = function() {
-            return this.offense.counter;
-        }
-
-        this.getOffenses = function() {
-            return offenses;
-        }
+    this.getName = function() {
+        return name;
     }
+
+    this.addOffense = function(score, body) {
+        this.offenses.push(new offense(score, body));
+        this.offensesCount++;
+    }
+
+    this.getOffensesCounter = function() {
+        return this.offense.counter;
+    }
+
+    this.getOffenses = function() {
+        return offenses;
+    }
+}
 
 function searchUsers(id){
     var found = -1;
@@ -88,19 +86,21 @@ logInWithFacebook = function() { //
 					            commentBody = comment['message'];
 
 					            
-					            toSend_preObjectCreation.push(commentBody);
-					        }
+					            toSend_preObjectCreation.push(commentBody); //For testing, I'm just putting every
+					        }												//comment in an array
 					        
 					    }
 
 					    var toSend = {
-					    	messages: toSend_preObjectCreation
-					    }
+					    	messages: toSend_preObjectCreation 	//To agree with JSON format, I'm putting the comments
+					    										//in an object. Works perfectly. Not sure if this 
+					    										//is how it's supposed to be done. Fight me.
+					    } 
 					    console.log(toSend);
-					    $(document).ready(function(){
+					    $(document).ready(function(){ //Probably not necessary but I'm just doing it to be sure
 
-			            		$.post('watson/parse', toSend ,function(data, status) {
-			            			console.log(data);
+			            		$.post('watson/parse', toSend ,function(data, status) { 
+			            			console.log(data); //Data is the server response. 
 			            		})
 			            	}
 			            );
@@ -114,7 +114,6 @@ logInWithFacebook = function() { //
 
 		} else {
 			alert('Login failed.');
-			console.log("FAILED");
 		}
 	});
 	return false;
