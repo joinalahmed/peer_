@@ -96,6 +96,7 @@ logInWithFacebook = function() { //
 					    var toSend = {
 					    	messages: toSend_preObjectCreation
 					    }
+					    console.log(toSend);
 					    $(document).ready(function(){
 
 			            		$.post('watson/parse', toSend ,function(data, status) {
