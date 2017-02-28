@@ -119,6 +119,21 @@ logInWithFacebook = function() { //
 	return false;
 };
 
+//Uncomment the block below and comment out the other logInWithFaceworm to skip Facebook login and scraping
+/*
+logInWithFacebook = function() { 		//FB login won't work from localhost with this method,
+	$(document).ready(function(){		//so I'm circumventing login and just sending hardcoded text to server
+
+			var toSend = a // JSON.stringify(a);
+
+			$.post('watson/parse', toSend , function(data, status) {
+				console.log(data);
+
+			})
+		}
+	);
+}
+*/
 
 window.fbAsyncInit = function() {
 	FB.init({
