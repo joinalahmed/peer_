@@ -1,0 +1,2 @@
+C:\Users\Centurion\dev\web\peer_\obj\Debug\peer_.njsprojResolveAssemblyReference.cache
+C:\Users\Centurion\dev\web\peer_\bin\Microsoft.NodejsTools.WebRole.dll

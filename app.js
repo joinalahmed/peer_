@@ -9,7 +9,7 @@ var bodyParser = require('body-parser');
 
 var socket = require('socket.io');
 
-var routes = require('./routes');
+var pubRoutes = require('./public/routes');
 var watson = require('./watson');
 
 var app = express();
@@ -21,15 +21,15 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(__dirname + '/public/favicon.ico'));
-app.use(logger('dev'));
+//app.use(favicon(__dirname + '/public/favicon.ico'));app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.use('/watson', watson);
-app.use('/', routes);
+app.use('/', pubRoutes);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

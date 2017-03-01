@@ -31,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.js" />
-    <Compile Include="routes.js" />
+    <Compile Include="public\routes.js" />
     <Compile Include="bin\www" />
     <Compile Include="watson.js" />
     <Content Include="package.json" />
@@ -41,7 +41,6 @@
     <Content Include="public\stylesheets\main.css" />
     <Content Include="README.md" />
     <Content Include="views\home.pug" />
-    <Content Include="views\index.pug" />
     <Content Include="views\layout.pug" />
     <Content Include="views\error.pug" />
   </ItemGroup>
