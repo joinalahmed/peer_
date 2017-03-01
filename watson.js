@@ -9,10 +9,6 @@ var tone_analyzer = watson.tone_analyzer({
     version_date: '2016-05-19 '
 });
 
-// url: peer-mlh.com/watson/parse?id={the facebookId}
-// for testing url: peer-mlh.com/watson/parse?text=
-// Method above is deprecated af. 
-
 router.post('/parse', function(req,res){
     var received = req.body;
     //I commented out the Watson block below to speed up testing. Uncomment to use Watson
@@ -29,7 +25,7 @@ router.post('/parse', function(req,res){
         }
 
     }); */
-    res.send(req.body); //Sending back the same data for testing. Remove when watson is being used.
+    res.send(req.body); //Sending back the same data in the request for testing. Remove when watson is being used.
 });
 
 

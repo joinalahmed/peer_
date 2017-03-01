@@ -40,6 +40,7 @@ router.get('/', function (req, res) {
     res.sendFile('./public/index_.html', { root: __dirname });
 });
 
+// Once authenticated, Facebook API will reroute to /auth/facebook/callback
 router.get('/auth/facebook', 
 	passport.authenticate('facebook')
 	);
