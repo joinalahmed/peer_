@@ -61,18 +61,18 @@ logInWithFacebook = function() {
 				'GET',
 				{"fields":"posts{comments{created_time,from,message}}"},
 				function(response) {
-					//console.log(response);
 					var toSend_preObjectCreation = [];
 
 					var posts = response['posts']['data'];
 
 				    var thisComment, authorId, authorName, commentBody;
 
-				    for (i = 0; i < posts.length; i++) { //I'M USING INCONSISTENT LOOPS BECAUSE THEY'RE DUMB
+				    for (i = 0; i < posts.length; i++) {
 
 				        for (k = 0; k < posts[i]['comments']['data'].length; k++) {
 
-				            //ask watson about individual comments
+				            // The for loops above isolate each comment object. Below I've isolated the 
+				            // fields from each comment.
 				            comment = posts[i]['comments']['data'][k];
 				            authorId = comment['from']['id'];
 				            authorName = comment['from']['name'];
@@ -94,7 +94,7 @@ logInWithFacebook = function() {
 				    										//is how it's supposed to be done. Fight me.
 				    } 
 				    console.log(toSend);
-				    $(document).ready(function(){	 //Probably not necessary but I'm just doing it to be sure
+				    $(document).ready(function(){	 //Probably not necessary to check for document completion.
 
 		            		$.post('watson/parse', toSend, function(data, status) { 
 		            			console.log(data);	 //Data is the server response. 
@@ -128,6 +128,7 @@ logInWithFacebook = function() { 		//FB login won't work from localhost with thi
 }
 */
 
+//This function initializies FB *after* the sdk is loaded.
 window.fbAsyncInit = function() {
 	FB.init({
 		appId: '165008204006667',
