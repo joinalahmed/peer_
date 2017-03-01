@@ -1,4 +1,4 @@
-﻿'use strict';
+'use strict';
 
 var express = require('express');
 var path = require('path');
@@ -14,8 +14,6 @@ var watson = require('./watson');
 
 var app = express();
 
-
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -29,7 +27,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser({limit: '50mb'}));   //I want to see if I can extend the payload and send all 
                                                 // people objects at once
 
-
 app.use('/watson', watson);
 app.use('/', pubRoutes);
 
@@ -39,10 +36,6 @@ app.use(function (req, res, next) {
     err.status = 404;
     next(err);
 });
-
-
-
-// error handlers
 
 // development error handler
 // will print stacktrace

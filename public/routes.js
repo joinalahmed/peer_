@@ -16,8 +16,6 @@ function(accessToken, refreshToken, profile, cb) {
 	return cb(null, profile);
 })); 
 
-
-
 passport.serializeUser(function(user, cb){
 	cb(null, user);
 });
