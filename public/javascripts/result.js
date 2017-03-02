@@ -1,40 +1,65 @@
+/*jshint asi:true*/
 var userIdToSearch = "walmart"; //ID of the user who's profile we're searching
 
 src = "//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js";
 
 var users = [];
 var offenses = [];
-function offense(score, body) { //Holds offense message bodies and a number of offenses. This object is only to be used with person.
-    this.score = score;
+/*function offense(score, body) {	//Holds offense message bodies and a number of offenses. This object is only to be used with person.
+    this.score = score;				//Uncomment when/if top offenses are enabled
     this.body = body;
-}
-function person(name,id,offense) {
-    this.name = name;
-    this.id = id;
-    this.offenses = [];
-    this.offensesCount = 0;
-    this.posts = [];
+}*/
 
-    this.getId = function() {
-        return id;
-    }
+function person(name, id) {
+	this.name = name;
+	this.id = id;
+	// this.offenseCt = 0;			//Offense count. Not needed yet for testing with just averages
+	// this.topOffense = []; 	//Uncomment when/if top offenses are enabled
+	this.commentCt = 0;
+	this.arithAvgScore = 0;
 
-    this.getName = function() {
-        return name;
-    }
+	this.quadAvgScore = 0;
+	this.median = 0;
 
-    this.addOffense = function(score, body) {
-        this.offenses.push(new offense(score, body));
-        this.offensesCount++;
-    }
+	this.calculateValues = function(scores, cnt) {
+		this.arithAvgScore = (function(scoreList, cnt){
+			var sum = 0;
+			for (var score in scoreList) {
+				sum += score;
+			}
+			return sum / cnt;
 
-    this.getOffensesCounter = function() {
-        return this.offense.counter;
-    }
+		})(scores, cnt);
 
-    this.getOffenses = function() {
-        return offenses;
-    }
+		this.quadAvgScore = (function(scores, cnt) {
+			var sum = 0;
+			for (var score in scoreList) {
+				sum += Math.pow(score,2);
+			}
+
+			return Math.sqrt(sum / cnt);
+		})(scores, cnt);
+
+		this.median = (function(scores, cnt) {
+			scores.sort();
+			if(cnt % 2 == 0) 
+				return (scores[cnt/2 - 1] + scores[cnt/2])/2;
+			else 
+				return scores[(cnt - 1)/2];
+			
+		})(scores, cnt);
+	}
+
+
+	/*this.totArithAvgScore = 0;*/
+
+/*	this.addArithAvgScore = function(commentCount, totalScore) {
+		var newAvg = this.totScore + totalScore;
+		newAvg /= commentCount + this.commentCt;
+
+		this.arithAvgScore = newAvg;
+		return newAvg;
+	}*/
 }
 
 function searchUsers(id){
@@ -62,30 +87,28 @@ logInWithFacebook = function() {
 				{"fields":"posts{comments{created_time,from,message}}"},
 				function(response) {
 					var toSend_preObjectCreation = [];
-
-					var posts = response['posts']['data'];
-
+					var posts = response.posts.data;
 				    var thisComment, authorId, authorName, commentBody;
 
 				    for (i = 0; i < posts.length; i++) {
 
-				        for (k = 0; k < posts[i]['comments']['data'].length; k++) {
+				        for (k = 0; k < posts[i].comments.data.length; k++) {
 
 				            // The for loops above isolate each comment object. Below I've isolated the 
 				            // fields from each comment.
-				            comment = posts[i]['comments']['data'][k];
-				            authorId = comment['from']['id'];
-				            authorName = comment['from']['name'];
+				            comment = posts[i].comments.data[k];
+				            authorId = comment.from.id;
+				            authorName = comment.from.name;
 
-				            commentBody = comment['message'];
+				            commentBody = comment.message;
 
 
 				            //TODO: Organize comments by person and send them as an object
 
+
 				            
 				            toSend_preObjectCreation.push(commentBody); //For testing, I'm just putting every
 				        }												//comment in an array
-				        
 				    }
 
 				    var toSend = {
@@ -94,6 +117,8 @@ logInWithFacebook = function() {
 				    										//is how it's supposed to be done. Fight me.
 				    } 
 				    console.log(toSend);
+
+				    //Send to watson
 				    $(document).ready(function(){	 //Probably not necessary to check for document completion.
 
 		            		$.post('watson/parse', toSend, function(data, status) { 

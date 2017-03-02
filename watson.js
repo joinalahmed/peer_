@@ -12,6 +12,8 @@ var tone_analyzer = watson.tone_analyzer({
 router.post('/parse', function(req,res){
     var received = req.body;
     //I commented out the Watson block below to speed up testing. Uncomment to use Watson
+
+    //TODO: Reorganize watson response BACK into comments recieved
     /*
     tone_analyzer.tone({ text: req.body.text},  //Make sure that the object sent in the post request to Watson has a
                                                 //text field, or rename the ".text" as appropriate.

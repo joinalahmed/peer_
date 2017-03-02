@@ -1,4 +1,5 @@
-﻿'use strict';
+﻿/*jshint node: true*/
+'use strict';
 
 var express = require('express');
 var path = require('path');
@@ -26,9 +27,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser({limit: '50mb'}));   //I want to see if I can extend the payload and send all 
-                                                // people objects at once
-
 
 app.use('/watson', watson);
 app.use('/', pubRoutes);
