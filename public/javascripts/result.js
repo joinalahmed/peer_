@@ -70,6 +70,7 @@ logInWithFacebook = function () {
             FB.api('/' + userIdToSearch, 'GET', {
                 "fields": "posts{comments{created_time,from,message}}"
             }, function (response) {
+                console.log(response);
                 var toSend_preObjectCreation = [];
                 var posts = response.posts.data;
                 var thisComment, authorId, authorName, commentBody, commentCnt = 0
