@@ -40,7 +40,10 @@ router.get('/', function (req, res) {
 
 // Once authenticated, Facebook API will reroute to /auth/facebook/callback
 router.get('/auth/facebook', 
-	passport.authenticate('facebook')
+	//passport.authenticate('facebook')
+    function (req, res) {
+        res.redirect('/result');
+    }
 	);
 
 router.get('/auth/facebook/callback',
