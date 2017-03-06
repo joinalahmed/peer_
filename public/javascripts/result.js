@@ -72,7 +72,8 @@ logInWithFacebook = function () {
             }, function (response) {
                 var toSend_preObjectCreation = [];
                 var posts = response.posts.data;
-                var thisComment, authorId, authorName, commentBody, commentCnt = 0, commentString = "";
+                var thisComment, authorId, authorName, commentBody, commentCnt = 0
+                    , commentString = "";
                 for (i = 0; i < posts.length; i++) {
                     for (k = 0; k < posts[i].comments.data.length; k++) {
                         commentCnt++;
@@ -86,30 +87,30 @@ logInWithFacebook = function () {
                         if ((var index = searchUsers(authorId)) != -1) {
                             user[index].commentString += commentBody + " ";
                             user[index].commentCnt++;
-                        } else {
+                        }
+                        else {
                             var new_user = new Person(authorName, authorId);
                             new_user.commentString += commentBody;
                             users.push();
                         }
-                        
                         //TODO: Setup database for organization of data
-                    } 
+                    }
                 }
-                
                 console.log(users);
-                
-                var toSend = {
-                    messages: toSend_preObjectCreation
-                        //To agree with JSON format, I'm putting the comments
-                        //in an object. Works perfectly. Not sure if this 
-                        //is how it's supposed to be done. Fight me.
+                for (user in users) {
+                    var toSend = {
+                            messages: user.commentString;
+                            //To agree with JSON format, I'm putting the comments
+                            //in an object. Works perfectly. Not sure if this 
+                            //is how it's supposed to be done. Fight me.
+                        }
+                        //Send to watson
+                    $(document).ready(function () { //Probably not necessary to check for document completion.
+                        $.post('watson/parse', toSend, function (data, status) {
+                            console.log(data); //Data is the server response. 
+                        })
+                    });
                 }
-                //Send to watson
-                $(document).ready(function () { //Probably not necessary to check for document completion.
-                    $.post('watson/parse', toSend, function (data, status) {
-                        console.log(data); //Data is the server response. 
-                    })
-                });
             });
         }
         else {
