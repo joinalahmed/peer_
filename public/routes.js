@@ -58,7 +58,7 @@ router.get('/about', function (req, res) {
 
 router.get('/result', 
 	function(req, res) {
-        res.sendfile('./result.html', { root: __dirname })
+        res.sendFile('./result.html', { root: __dirname })
 	});
 
 module.exports = router;

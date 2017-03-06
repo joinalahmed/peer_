@@ -11,8 +11,8 @@ var offenses = [];
 function Person(name, id) {
     this.name = name;
     this.id = id;
-    // this.offenseCt = 0;			//Offense count. Not needed yet for testing with just averages
-    // this.topOffense = [];    	//Uncomment when/if top offenses are enabled
+    //this.offenseCt = 0;			//Offense count. Not needed yet for testing with just averages
+    //this.topOffense = [];    	//Uncomment when/if top offenses are enabled
     this.commentCt = 0;
     this.commentString = "";
     this.arithAvgScore = 0;
@@ -100,7 +100,7 @@ logInWithFacebook = function () {
                 console.log(users);
                 for (user in users) {
                     var toSend = {
-                            messages: user.commentString;
+                            messages: user.commentString
                             //To agree with JSON format, I'm putting the comments
                             //in an object. Works perfectly. Not sure if this 
                             //is how it's supposed to be done. Fight me.
