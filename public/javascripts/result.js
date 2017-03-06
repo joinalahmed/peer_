@@ -1,4 +1,4 @@
-var userIdToSearch = "jorge.pardo.56808"; //ID of the user who's profile we're searching
+var userIdToSearch = "justine.m.henry"; //ID of the user who's profile we're searching
 src = "//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js";
 var users = [];
 var offenses = [];
