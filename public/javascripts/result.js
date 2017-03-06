@@ -84,7 +84,8 @@ logInWithFacebook = function () {
                         authorName = comment.from.name;
                         commentBody = comment.message;
                         //TODO: Organize comments by person and send them as an object
-                        if ((var index = searchUsers(authorId)) != -1) {
+                        var index = searchUsers(authorId);
+                        if (index != -1) {
                             user[index].commentString += commentBody + " ";
                             user[index].commentCnt++;
                         }
