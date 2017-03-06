@@ -88,11 +88,13 @@ logInWithFacebook = function () {
                         if (index != -1) {
                             user[index].commentString += commentBody + " ";
                             user[index].commentCnt++;
+                            console.log('User is in:', user[index]);
                         }
                         else {
                             var new_user = new Person(authorName, authorId);
                             new_user.commentString += commentBody;
                             users.push();
+                            console.log('User not in:', authorId);
                         }
                         //TODO: Setup database for organization of data
                     }
