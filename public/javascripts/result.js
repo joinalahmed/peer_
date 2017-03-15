@@ -110,10 +110,22 @@ logInWithFacebook = function () {
                         //TODO: Setup database for organization of data
                     }
                 }
+                
+                var toSend = {
+                    text: "Hello, I'm just calling to make sure that you're okay. I love you and everything is going amazingly!";
+                }
+                
+                $(document).ready(function () { //Probably not necessary to check for document completion.
+                        $.post('watson/parse', toSend, function (data, status) {
+                            console.log(data); //Data is the server response. 
+                        })
+                    });
+                
+                /*
                 console.log(users);
                 for (user in users) {
                     var toSend = {
-                            text: "Hello, I'm just calling to make sure that you're okay. I love you and everything is going amazingly!"//user.commentString
+                            messages: user.commentString
                             //To agree with JSON format, I'm putting the comments
                             //in an object. Works perfectly. Not sure if this 
                             //is how it's supposed to be done. Fight me.
@@ -124,7 +136,7 @@ logInWithFacebook = function () {
                             console.log(data); //Data is the server response. 
                         })
                     });
-                }
+                }*/
             });
         }
         else {
