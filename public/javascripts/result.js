@@ -1,4 +1,4 @@
-var userIdToSearch = "jorge.pardo.56808"; //ID of the user who's profile we're searching
+var userIdToSearch = "/me"; //ID of the user who's profile we're searching
 src = "//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js";
 var users = [];
 var offenses = [];
@@ -72,7 +72,13 @@ logInWithFacebook = function () {
             }, function (response) {
                 console.log(response);
                 var toSend_preObjectCreation = [];
-                var posts = response.posts.data;
+                
+                try {
+                    var posts = response.posts.data;
+                } catch (err) {
+                    //If you get here it means the user had no comments/peer couldn't access them
+                    //TODO setup error catching here
+                }
                 var thisComment, authorId, authorName, commentBody, commentCnt = 0
                     , commentString = "";
                 for (i = 0; i < posts.length; i++) {
