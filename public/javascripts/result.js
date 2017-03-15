@@ -90,7 +90,10 @@ logInWithFacebook = function () {
                         authorId = comment.from.id;
                         authorName = comment.from.name;
                         commentBody = comment.message;
+                        
+                        console.log(commentBody);
                         //TODO: Organize comments by person and send them as an object
+                        /*
                         var index = searchUsers(authorId);
                         if (index != -1) {
                             user[index].commentString += commentBody + " ";
@@ -102,7 +105,7 @@ logInWithFacebook = function () {
                             new_user.commentString += commentBody;
                             users.push();
                             console.log('User not in:', authorId);
-                        }
+                        }*/
                         //TODO: Setup database for organization of data
                     }
                 }
