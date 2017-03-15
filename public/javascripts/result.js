@@ -90,9 +90,8 @@ logInWithFacebook = function () {
                         authorId = comment.from.id;
                         authorName = comment.from.name;
                         commentBody = comment.message;
-                        
-                        console.log(commentBody);
                         //TODO: Organize comments by person and send them as an object
+                        
                         /*
                         var index = searchUsers(authorId);
                         if (index != -1) {
@@ -105,14 +104,16 @@ logInWithFacebook = function () {
                             new_user.commentString += commentBody;
                             users.push();
                             console.log('User not in:', authorId);
-                        }*/
+                        } */
+                        
+                        console.log(commentBody);
                         //TODO: Setup database for organization of data
                     }
                 }
                 console.log(users);
                 for (user in users) {
                     var toSend = {
-                            messages: user.commentString
+                            text: "Hello, I'm just calling to make sure that you're okay. I love you and everything is going amazingly!"//user.commentString
                             //To agree with JSON format, I'm putting the comments
                             //in an object. Works perfectly. Not sure if this 
                             //is how it's supposed to be done. Fight me.
