@@ -112,7 +112,7 @@ logInWithFacebook = function () {
                 }
                 
                 var toSend = {
-                    text: "Hello, I'm just calling to make sure that you're okay. I love you and everything is going amazingly!";
+                    text: "Hello, I'm just calling to make sure that you're okay. I love you and everything is going amazingly!"
                 }
                 
                 $(document).ready(function () { //Probably not necessary to check for document completion.
